@@ -43,6 +43,16 @@
     "@types/jest": "^26.0.15",
     "git-commit-msg-linter": "^3.0.0",
     "husky": "^5.1.3",
-    "lint-staged": "^10.5.4"
+    "lint-staged": "^10.5.4",
+    "msw": "^0.27.1"
+  },
+  "msw": {
+    "workerDirectory": "public"
+  },
+  "jest": {
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "/src/mocks"
+    ]
   }
 }

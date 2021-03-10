@@ -1,0 +1,54 @@
+{
+    "trivias": [
+        {
+            "id": 1,
+            "title": "Lorem ip sum 1",
+            "isTruthy": true
+        },
+        {
+            "id": 2,
+            "title": "Lorem ip sum 2",
+            "isTruthy": false
+        },
+        {
+            "id": 3,
+            "title": "Lorem ip sum 3",
+            "isTruthy": true
+        },
+        {
+            "id": 4,
+            "title": "Lorem ip sum 4",
+            "isTruthy": false
+        },
+        {
+            "id": 5,
+            "title": "Lorem ip sum 5",
+            "isTruthy": false
+        },
+        {
+            "id": 6,
+            "title": "Lorem ip sum 6",
+            "isTruthy": true
+        },
+        {
+            "id": 7,
+            "title": "Lorem ip sum 7",
+            "isTruthy": true
+        },
+        {
+            "id": 8,
+            "title": "Lorem ip sum 8",
+            "isTruthy": true
+        },
+        {
+            "id": 9,
+            "title": "Lorem ip sum 9",
+            "isTruthy": true
+        },
+        {
+            "id": 10,
+            "title": "Lorem ip sum 10",
+            "isTruthy": true
+        }
+    ]
+}
