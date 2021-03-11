@@ -8,5 +8,5 @@ export function* sendErrorReport(payload: Error) {
 }
 
 export function* errors() {
-  yield takeLatest(ADD, sendErrorReport);
+  yield takeLatest(ADD as any, sendErrorReport);
 }

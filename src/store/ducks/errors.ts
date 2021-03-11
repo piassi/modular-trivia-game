@@ -1,10 +1,10 @@
-import { Action, State } from "../types";
+import { Action, State } from '../types';
 
 export type Error = {
-  message: string
-}
+  message: string;
+};
 
-export type ErrorState = Error[]
+export type ErrorState = Error[];
 
 export const ADD = 'errors/ADD';
 
