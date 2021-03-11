@@ -1,9 +1,7 @@
+import { Routes } from './Routes';
+
 function App() {
-  return (
-    <div className="App">
-      Trivia
-    </div>
-  );
+  return <Routes />;
 }
 
 export default App;
