@@ -4,7 +4,7 @@ import { Trivia } from './types';
 type TriviaRequest = {
   category: string;
   question: string;
-  correct_answer: boolean;
+  correct_answer: string;
 };
 
 export const getTrivias = async () => {
@@ -21,7 +21,7 @@ export const getTrivias = async () => {
       category,
       question,
       id: index,
-      correctAnswer: correct_answer,
+      correctAnswer: correct_answer === 'True',
     })
   );
 

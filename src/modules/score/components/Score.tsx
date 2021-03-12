@@ -1,10 +1,18 @@
-import { Answer, Trivia } from '../../game/types';
+import { AnsweredTrivia } from '../types';
+import { TriviaScoreRow } from './TriviaScoreRow';
 
 type Props = {
-  trivias: Trivia[];
-  answers: Answer[];
+  score: AnsweredTrivia[];
 };
 
 export default function Score(props: Props) {
-  return <div>Score</div>;
+  const { score } = props;
+
+  return (
+    <div>
+      {score.map((answeredTrivia) => (
+        <TriviaScoreRow {...answeredTrivia} />
+      ))}
+    </div>
+  );
 }

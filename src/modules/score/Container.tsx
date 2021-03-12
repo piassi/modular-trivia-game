@@ -1,26 +1,29 @@
-// import { useEffect, useState } from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { fetchTrivias, getAnswers, getTrivias } from '../game/ducks';
-// import Score from './components/Score';
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { Redirect } from 'react-router';
+import { getAnswers, getTrivias } from '../game/ducks';
+import Score from './components/Score';
+import { AnsweredTrivia } from './types';
 
 export function Container() {
-  // const dispatch = useDispatch();
-  // const trivias = useSelector(getTrivias);
-  // const answers = useSelector(getAnswers);
-  // const [score, setScore] = useState([]);
+  const trivias = useSelector(getTrivias);
+  const answers = useSelector(getAnswers);
+  const [score, setScore] = useState<AnsweredTrivia[]>([]);
 
-  // useEffect(() => {
-  //   dispatch(fetchTrivias());
-  // }, [dispatch]);
+  if (!trivias.length && answers) {
+    return <Redirect to="/" />;
+  }
 
-  // if (trivias && answers) {
-  //   const calculatedScore = trivias.map((trivia) => ({
-  //     ...trivia,
-  //     answeredRight: answers[trivia.id].answer === trivia.correctAnswer,
-  //   }));
+  if (!score.length) {
+    const calculatedScore = trivias.map<AnsweredTrivia>((trivia) => {
+      return {
+        ...trivia,
+        answeredRight: answers[trivia.id] === trivia.correctAnswer,
+      };
+    });
 
-  //   setScore(calculatedScore);
-  // }
+    setScore(calculatedScore);
+  }
 
-  return <p>Score</p>;
+  return <Score score={score} />;
 }
