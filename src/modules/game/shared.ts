@@ -1,3 +1,2 @@
-import { getTrivias, fetchTrivias, getAnswers } from './ducks';
+export { getTrivias, getAnswers, resetGame } from './ducks';
 export type { Answer, Trivia } from './types';
-export { getTrivias, fetchTrivias, getAnswers };

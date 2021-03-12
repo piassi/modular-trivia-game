@@ -1,17 +1,23 @@
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router';
 import { getAnswers, getTrivias } from '../game/ducks';
 import Score from './components/Score';
 import { AnsweredTrivia } from './types';
+import { resetGame } from '../game/shared';
 
 export function Container() {
   const trivias = useSelector(getTrivias);
   const answers = useSelector(getAnswers);
   const [score, setScore] = useState<AnsweredTrivia[]>([]);
   const [correctTriviasTotal, setCorrectTriviasTotal] = useState(0);
+  const dispatch = useDispatch();
 
-  if (!trivias.length && answers) {
+  const startGameReset = () => {
+    dispatch(resetGame());
+  };
+
+  if (!trivias.length) {
     return <Redirect to="/" />;
   }
 
@@ -41,6 +47,7 @@ export function Container() {
       score={score}
       triviasTotal={trivias.length}
       correctTriviasTotal={correctTriviasTotal}
+      startGameReset={startGameReset}
     />
   );
 }

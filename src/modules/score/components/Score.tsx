@@ -1,3 +1,4 @@
+import Button from 'react-bootstrap/Button';
 import { AnsweredTrivia } from '../types';
 import { TriviaScoreRow } from './TriviaScoreRow';
 
@@ -5,10 +6,11 @@ type Props = {
   score: AnsweredTrivia[];
   triviasTotal: number;
   correctTriviasTotal: number;
+  startGameReset: () => void;
 };
 
 export default function Score(props: Props) {
-  const { score, correctTriviasTotal, triviasTotal } = props;
+  const { score, correctTriviasTotal, triviasTotal, startGameReset } = props;
 
   return (
     <div>
@@ -18,8 +20,14 @@ export default function Score(props: Props) {
       </h1>
 
       {score.map((answeredTrivia) => (
-        <TriviaScoreRow {...answeredTrivia} />
+        <TriviaScoreRow key={answeredTrivia.id} {...answeredTrivia} />
       ))}
+
+      <div className="d-flex justify-content-center mt-4">
+        <Button onClick={() => startGameReset()} size="lg">
+          Play Again?
+        </Button>
+      </div>
     </div>
   );
 }

@@ -5,6 +5,7 @@ import { Trivia, GameState, Answer } from './types';
 
 export const SET_TRIVIAS = 'game/SET_TRIVIAS';
 export const ADD_ANSWER = 'game/ADD_ANSWER';
+export const CLEAR_ANSWERS = 'game/CLEAR_ANSWERS';
 
 const defaultState: GameState = {
   trivias: [],
@@ -25,6 +26,12 @@ export default function reducer(state = defaultState, action: Action = {}) {
         },
       };
 
+    case CLEAR_ANSWERS:
+      return {
+        ...state,
+        answers: {},
+      };
+
     default:
       return state;
   }
@@ -42,6 +49,10 @@ export function addAnswer(payload: Answer) {
   return { type: ADD_ANSWER, payload };
 }
 
+export function clearAnswers() {
+  return { type: CLEAR_ANSWERS };
+}
+
 export function getAnswers(state: State) {
   return state.game.answers;
 }
@@ -49,4 +60,9 @@ export function getAnswers(state: State) {
 export const fetchTrivias = () => async (dispatch: Dispatch) => {
   const trivias = await service.getTrivias();
   dispatch(setTrivias(trivias));
+};
+
+export const resetGame = () => async (dispatch: Dispatch) => {
+  dispatch(setTrivias([]));
+  dispatch(clearAnswers());
 };
