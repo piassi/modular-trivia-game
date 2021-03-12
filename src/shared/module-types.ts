@@ -9,5 +9,5 @@ export type Route = {
 export type Module = {
   namespace: string;
   route: Route;
-  reducer: Reducer;
+  reducer?: Reducer;
 };
