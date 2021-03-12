@@ -1,4 +1,6 @@
 export const state = {
-    errors: [],
-  };
-  
+  game: {
+    answers: {},
+    trivias: [],
+  },
+};
