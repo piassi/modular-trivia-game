@@ -1,10 +1,10 @@
 import { Feature, Route } from '../../shared/feature-types';
-import { Main } from './components/Main';
+import { Container } from './Container';
 import reducer from './ducks';
 
 const route: Route = {
   path: '/',
-  component: Main,
+  component: Container,
 };
 
 const namespace = 'trivias';
