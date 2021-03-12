@@ -7,7 +7,7 @@ const route: Route = {
   component: Container,
 };
 
-const namespace = 'trivias';
+const namespace = 'game';
 
 export const game: Module = {
   namespace,

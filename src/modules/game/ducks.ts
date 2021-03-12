@@ -1,25 +1,29 @@
 import { Dispatch } from 'redux';
 import { Action, State } from '../../store/types';
 import * as service from './service';
-import { Trivia, TriviasState } from './types';
+import { Trivia, GameState } from './types';
 
-export const SET = 'trivias/SET';
+export const SET_TRIVIAS = 'game/SET_TRIVIAS';
 
-export default function reducer(state: TriviasState = [], action: Action = {}) {
+const defaultState: GameState = {
+  trivias: [],
+};
+
+export default function reducer(state = defaultState, action: Action = {}) {
   switch (action.type) {
-    case SET:
-      return action.payload;
+    case SET_TRIVIAS:
+      return { ...state, trivias: action.payload };
     default:
       return state;
   }
 }
 
 export function getTrivias(state: State) {
-  return state.trivias;
+  return state.game.trivias;
 }
 
 export function setTrivias(payload: Trivia[]) {
-  return { type: SET, payload };
+  return { type: SET_TRIVIAS, payload };
 }
 
 export const fetchTrivias = () => async (dispatch: Dispatch) => {

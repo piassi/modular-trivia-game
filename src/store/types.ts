@@ -1,4 +1,4 @@
-import { TriviasState } from '../modules/game/types';
+import { GameState } from '../modules/game/types';
 import { ErrorState } from './ducks/errors';
 
 export type Action = {
@@ -8,5 +8,5 @@ export type Action = {
 
 export type State = {
   errors: ErrorState;
-  trivias: TriviasState;
+  game: GameState;
 };

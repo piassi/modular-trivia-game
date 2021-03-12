@@ -6,4 +6,6 @@ export type Trivia = {
   isTruthy: boolean;
 };
 
-export type TriviasState = Trivia[];
+export type GameState = {
+  trivias: Trivia[];
+};
