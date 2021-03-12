@@ -1,12 +1,18 @@
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { features } from './features';
 
 export function Routes() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path="/">
-          Home
-        </Route>
+        {features.map((feature) => (
+          <Route
+            key={feature.namespace}
+            exact
+            path={feature.route.path}
+            component={feature.route.component}
+          />
+        ))}
       </Switch>
     </BrowserRouter>
   );

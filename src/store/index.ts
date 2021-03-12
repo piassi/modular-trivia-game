@@ -1,20 +1,17 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import errors from './ducks/errors';
-import createSagaMiddleware from 'redux-saga';
-import { root } from './sagas';
+import { getFeaturesReducers } from '../features';
+import thunk from 'redux-thunk';
 
 export function store() {
-  const sagaMiddleware = createSagaMiddleware();
-
   const store = createStore(
     combineReducers({
       errors,
+      ...getFeaturesReducers(),
     }),
-    composeWithDevTools(applyMiddleware(sagaMiddleware))
+    composeWithDevTools(applyMiddleware(thunk))
   );
-
-  sagaMiddleware.run(root);
 
   return store;
 }
