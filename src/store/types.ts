@@ -1,5 +1,4 @@
 import { GameState } from '../modules/game/types';
-import { ErrorState } from './ducks/errors';
 
 export type Action = {
   type?: string;
@@ -7,6 +6,5 @@ export type Action = {
 };
 
 export type State = {
-  errors: ErrorState;
   game: GameState;
 };
