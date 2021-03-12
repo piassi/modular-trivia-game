@@ -26,7 +26,7 @@ export function Container() {
     setCurrentTriviaIndex((currentIndex) => currentIndex + 1);
   };
 
-  if (trivias.length && currentTriviaIndex + 1 >= trivias.length) {
+  if (trivias.length && currentTriviaIndex + 1 > trivias.length) {
     return <Redirect to="/score" />;
   }
 
