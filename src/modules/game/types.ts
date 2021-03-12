@@ -6,6 +6,12 @@ export type Trivia = {
   isTruthy: boolean;
 };
 
+export type Answer = {
+  triviaId: number;
+  answer: boolean;
+};
+
 export type GameState = {
   trivias: Trivia[];
+  answers: Answer[];
 };

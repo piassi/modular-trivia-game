@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router';
 import Game from './components/Game';
 import { Welcome } from './components/Welcome';
-import { fetchTrivias, getTrivias } from './ducks';
+import { addAnswer, fetchTrivias, getTrivias } from './ducks';
 import { HandleAnswerFunction } from './types';
 
 export function Container() {
@@ -16,6 +16,13 @@ export function Container() {
   };
 
   const handleAnswer: HandleAnswerFunction = (answer: boolean) => {
+    dispatch(
+      addAnswer({
+        triviaId: trivias[currentTriviaIndex].id,
+        answer,
+      })
+    );
+
     setCurrentTriviaIndex((currentIndex) => currentIndex + 1);
   };
 
