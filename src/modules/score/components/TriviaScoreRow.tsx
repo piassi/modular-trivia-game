@@ -8,7 +8,9 @@ export function TriviaScoreRow(props: AnsweredTrivia) {
   return (
     <Row className="mb-3">
       <Col className="h3" xs={1}>
-        {answeredRight ? '+' : '-'}
+        <span className={answeredRight ? 'text-success' : 'text-danger'}>
+          {answeredRight ? '+' : '-'}
+        </span>
       </Col>
       <Col>
         <div className="lead" dangerouslySetInnerHTML={{ __html: question }} />
