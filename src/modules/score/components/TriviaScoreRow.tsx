@@ -1,13 +1,18 @@
 import { AnsweredTrivia } from '../types';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 export function TriviaScoreRow(props: AnsweredTrivia) {
-  const { category, answeredRight, question } = props;
+  const { answeredRight, question } = props;
 
   return (
-    <div>
-      {category} <br />
-      <p dangerouslySetInnerHTML={{ __html: question }} />
-      {answeredRight ? 'You got it' : 'Sorry dude, you missed'}
-    </div>
+    <Row className="mb-3">
+      <Col className="h3" xs={1}>
+        {answeredRight ? '+' : '-'}
+      </Col>
+      <Col>
+        <div className="lead" dangerouslySetInnerHTML={{ __html: question }} />
+      </Col>
+    </Row>
   );
 }

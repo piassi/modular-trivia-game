@@ -20,7 +20,7 @@ export default function Game(props: Props) {
     <div>
       <TriviaCard {...currentTrivia} handleAnswer={handleAnswer} />
 
-      <p>
+      <p className="text-center mt-5">
         {currentTriviaIndex + 1} of {triviasTotal}
       </p>
     </div>

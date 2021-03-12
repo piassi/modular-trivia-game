@@ -1,0 +1,11 @@
+// Bootstrap
+$primary: #7f0fff;
+@import '~bootstrap/scss/bootstrap';
+
+body {
+  background-color: #f1f1f1;
+}
+
+.font-size-sm {
+  font-size: 0.9rem;
+}
