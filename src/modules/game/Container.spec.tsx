@@ -1,13 +1,14 @@
 import { screen, waitFor } from '@testing-library/react';
 import user from '@testing-library/user-event';
 import { trivias } from '../../tests/fixtures/trivias';
-import { renderWithReduxProvider } from '../../tests/utils/renderWithReduxProvider';
+import { renderWithProviders } from '../../tests/utils/renderWithProviders';
 import { Container } from './Container';
 import * as service from './service';
+import reactRouter from 'react-router';
 
 describe('Container', () => {
   it('should render welcome screen by default', () => {
-    renderWithReduxProvider(<Container />);
+    renderWithProviders(<Container />);
     const title = screen.getByRole('heading', {
       name: /welcome/i,
     });
@@ -16,7 +17,7 @@ describe('Container', () => {
   });
 
   it('should load first trivia when user clicks on start button', async () => {
-    renderWithReduxProvider(<Container />);
+    renderWithProviders(<Container />);
     jest.spyOn(service, 'getTrivias').mockResolvedValue(trivias);
     const startButton = screen.getByRole('button', {
       name: /start/i,
@@ -36,8 +37,9 @@ describe('Container', () => {
   });
 
   it('should load next trivia after user select answer', async () => {
-    renderWithReduxProvider(<Container />);
+    renderWithProviders(<Container />);
     jest.spyOn(service, 'getTrivias').mockResolvedValue(trivias);
+
     const startButton = screen.getByRole('button', {
       name: /start/i,
     });
@@ -58,5 +60,25 @@ describe('Container', () => {
       expect(title).toBeInTheDocument();
       expect(question).toBeInTheDocument();
     });
+  });
+
+  it('should redirect to score after user finishes answering', async () => {
+    renderWithProviders(<Container />);
+    jest.spyOn(service, 'getTrivias').mockResolvedValue(trivias);
+    const RedirectSpy = jest.spyOn(reactRouter, 'Redirect');
+    const startButton = await screen.findByRole('button', {
+      name: /start/i,
+    });
+
+    user.click(startButton);
+
+    const answerTruthyButton = await screen.findByRole('button', {
+      name: /true/i,
+    });
+    user.click(answerTruthyButton);
+    user.click(answerTruthyButton);
+    user.click(answerTruthyButton);
+
+    expect(RedirectSpy).toHaveBeenCalledWith({ to: '/score' }, {});
   });
 });
