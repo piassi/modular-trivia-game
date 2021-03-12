@@ -1,7 +1,19 @@
 import { Trivia } from '../ducks';
+import { HandleAnswerFunction } from '../types';
 
-export function TriviaCard(props: Trivia) {
-  const { title } = props;
+type Props = Trivia & {
+  handleAnswer: HandleAnswerFunction;
+};
 
-  return <h2>{title}</h2>;
+export function TriviaCard(props: Props) {
+  const { title, handleAnswer } = props;
+
+  return (
+    <div>
+      <h2>{title}</h2>
+
+      <button onClick={() => handleAnswer(true)}>True</button>
+      <button onClick={() => handleAnswer(false)}>False</button>
+    </div>
+  );
 }
