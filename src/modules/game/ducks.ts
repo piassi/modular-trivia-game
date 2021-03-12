@@ -1,14 +1,7 @@
 import { Dispatch } from 'redux';
 import { Action, State } from '../../store/types';
 import * as service from './service';
-
-export type Trivia = {
-  id: number;
-  title: string;
-  isTruthy: boolean;
-};
-
-export type TriviasState = Trivia[];
+import { Trivia, TriviasState } from './types';
 
 export const LOAD = 'trivias/LOAD';
 export const SET = 'trivias/SET';

@@ -1,5 +1,4 @@
-import { Trivia } from '../ducks';
-import { HandleAnswerFunction } from '../types';
+import { HandleAnswerFunction, Trivia } from '../types';
 
 type Props = Trivia & {
   handleAnswer: HandleAnswerFunction;
