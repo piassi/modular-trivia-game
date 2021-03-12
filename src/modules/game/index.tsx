@@ -1,4 +1,4 @@
-import { Feature, Route } from '../../shared/feature-types';
+import { Module, Route } from '../../shared/module-types';
 import { Container } from './Container';
 import reducer from './ducks';
 
@@ -9,7 +9,7 @@ const route: Route = {
 
 const namespace = 'trivias';
 
-export const trivias: Feature = {
+export const game: Module = {
   namespace,
   route,
   reducer,

@@ -1,4 +1,4 @@
-import { TriviasState } from '../features/trivias/ducks';
+import { TriviasState } from '../modules/game/ducks';
 import { ErrorState } from './ducks/errors';
 
 export type Action = {

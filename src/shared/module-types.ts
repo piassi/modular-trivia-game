@@ -6,7 +6,7 @@ export type Route = {
   component: ComponentType;
 };
 
-export type Feature = {
+export type Module = {
   namespace: string;
   route: Route;
   reducer: Reducer;

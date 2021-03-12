@@ -1,16 +1,16 @@
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import { features } from './features';
+import { modules } from './modules';
 
 export function Routes() {
   return (
     <BrowserRouter>
       <Switch>
-        {features.map((feature) => (
+        {modules.map((module) => (
           <Route
-            key={feature.namespace}
+            key={module.namespace}
             exact
-            path={feature.route.path}
-            component={feature.route.component}
+            path={module.route.path}
+            component={module.route.component}
           />
         ))}
       </Switch>
