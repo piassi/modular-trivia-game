@@ -19,18 +19,18 @@ describe('Container', () => {
   it('should load first trivia when user clicks on start button', async () => {
     renderWithProviders(<Container />);
     jest.spyOn(service, 'getTrivias').mockResolvedValue(trivias);
-    const startButton = screen.getByRole('button', {
+    const startButton = await screen.findByRole('button', {
       name: /start/i,
     });
 
     user.click(startButton);
 
-    await waitFor(() => {
-      const title = screen.queryByRole('heading', {
-        name: trivias[0].category,
-      });
-      const question = screen.queryByText(trivias[0].question);
+    const title = await screen.findByRole('heading', {
+      name: trivias[0].category,
+    });
+    const question = screen.queryByText(trivias[0].question);
 
+    await waitFor(() => {
       expect(title).toBeInTheDocument();
       expect(question).toBeInTheDocument();
     });
@@ -40,23 +40,24 @@ describe('Container', () => {
     renderWithProviders(<Container />);
     jest.spyOn(service, 'getTrivias').mockResolvedValue(trivias);
 
-    const startButton = screen.getByRole('button', {
+    const startButton = await screen.findByRole('button', {
       name: /start/i,
     });
 
     user.click(startButton);
 
+    const answerTruthyButton = await screen.findByRole('button', {
+      name: /true/i,
+    });
+
+    user.click(answerTruthyButton);
+
+    const title = screen.queryByRole('heading', {
+      name: trivias[1].category,
+    });
+    const question = screen.queryByText(trivias[1].question);
+
     await waitFor(() => {
-      const answerTruthyButton = screen.getByRole('button', {
-        name: /true/i,
-      });
-      user.click(answerTruthyButton);
-
-      const title = screen.queryByRole('heading', {
-        name: trivias[1].category,
-      });
-      const question = screen.queryByText(trivias[1].question);
-
       expect(title).toBeInTheDocument();
       expect(question).toBeInTheDocument();
     });
