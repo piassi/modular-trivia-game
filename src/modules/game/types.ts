@@ -2,8 +2,9 @@ export type HandleAnswerFunction = (answer: boolean) => void;
 
 export type Trivia = {
   id: number;
-  title: string;
-  isTruthy: boolean;
+  category: string;
+  question: string;
+  correctAnswer: boolean;
 };
 
 export type Answer = {
@@ -13,5 +14,5 @@ export type Answer = {
 
 export type GameState = {
   trivias: Trivia[];
-  answers: Answer[];
+  answers: { [key: string]: boolean };
 };

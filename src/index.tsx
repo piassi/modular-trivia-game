@@ -1,13 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import { startMocks } from './mocks/startMocks';
 
 export const start = (): void => {
-  if (process.env.NODE_ENV === 'development') {
-    startMocks();
-  }
-
   ReactDOM.render(
     <React.StrictMode>
       <App />

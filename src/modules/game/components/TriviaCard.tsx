@@ -5,11 +5,12 @@ type Props = Trivia & {
 };
 
 export function TriviaCard(props: Props) {
-  const { title, handleAnswer } = props;
+  const { category, question, handleAnswer } = props;
 
   return (
     <div>
-      <h2>{title}</h2>
+      <h2>{category}</h2>
+      <p dangerouslySetInnerHTML={{ __html: question }} />
 
       <button onClick={() => handleAnswer(true)}>True</button>
       <button onClick={() => handleAnswer(false)}>False</button>

@@ -8,7 +8,7 @@ export const ADD_ANSWER = 'game/ADD_ANSWER';
 
 const defaultState: GameState = {
   trivias: [],
-  answers: [],
+  answers: {},
 };
 
 export default function reducer(state = defaultState, action: Action = {}) {
@@ -17,7 +17,13 @@ export default function reducer(state = defaultState, action: Action = {}) {
       return { ...state, trivias: action.payload };
 
     case ADD_ANSWER:
-      return { ...state, answers: [...state.answers, action.payload] };
+      return {
+        ...state,
+        answers: {
+          ...state.answers,
+          [action.payload.triviaId]: action.payload.answer,
+        },
+      };
 
     default:
       return state;
@@ -34,6 +40,10 @@ export function setTrivias(payload: Trivia[]) {
 
 export function addAnswer(payload: Answer) {
   return { type: ADD_ANSWER, payload };
+}
+
+export function getAnswers(state: State) {
+  return state.game.answers;
 }
 
 export const fetchTrivias = () => async (dispatch: Dispatch) => {
