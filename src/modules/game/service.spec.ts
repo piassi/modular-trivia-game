@@ -46,4 +46,12 @@ describe('service', () => {
       },
     ]);
   });
+
+  it('should throw if no result returned from api', async () => {
+    jest.spyOn(axios, 'get').mockResolvedValueOnce({
+      data: {},
+    });
+    const result = getTrivias();
+    await expect(result).rejects.toThrow();
+  });
 });
